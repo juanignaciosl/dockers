@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  pg:
+    build: .
+    volumes:
+      - ./data:/var/lib/postgresql
+      - /Users/juanignaciosl/Development/carto/observatory-extension:/observatory-extension
+    environment:
+      PGDATA: /var/lib/postgresql/pg_data
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: gis
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
+    privileged: true
+    ports:
+      - 5555:5432
+    network_mode: bridge
